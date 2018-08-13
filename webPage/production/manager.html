@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+    <title>Portfolio Management</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- gauge.js -->
+    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <!--<script src="../build/js/custom.min.js"></script>-->
+    <script src="../vendors/jquery.dataTables.min.js"></script>
+
+    <script language="JavaScript"><!--
+
+    $(document).ready(function (){
+        displayLineChart();
+        disPortfolioTable();
+    })
+
+    function displayLineChart() {
+        var lineChartData = {
+            // x轴的标示
+            labels : ["January","February","March","April","May","June","July"],
+            // 数据，数组中的每一个object代表一条线
+            datasets : [
+                {
+                    borderColor : "#1ABB9C",
+                     backgroundColor : "rgba(0,0,0,0)",
+                    // 与x轴标示对应的数据
+                    data : [65,59,90,81,56,55,40]
+                },
+                {
+                    borderColor : "#36648B",
+                     backgroundColor : "rgba(0,0,0,0)",
+                    data : [28,48,40,19,96,27,100]
+                }
+            ]
+        };
+        var ctx = document.getElementById("lineChartPortfolio").getContext("2d");
+        var options = { };
+        var lineChart = new Chart(ctx,{
+            type: 'line',
+            data: lineChartData,
+            options: options
+        });
+    }
+
+    function disPortfolioTable(){
+        $('#table_portfolio').DataTable({
+            data:[{"name":"ppp","total_return":"ddd","daily_return":"sdfsd","day20_return":"22","day250_return":"555","create":"sdfdf"},{"name":"ppp","total_return":"ddd","daily_return":"sdfsd","day20_return":"22","day250_return":"555","create":"sdfdf"}],
+            columns:[{data:"name"},{data:"total_return"},{data:"daily_return"},{data:"day20_return"},{data:"day250_return"},{data:"create"}]
+        });
+    }
+
+    function getPortfolioInformation(){
+        $.ajax({
+            type:"Get",
+            // url:"/api/Orders",
+            url:"Portfolios.txt",
+            dataType:"json",
+            success: function(data){
+                $.each(data, function(idx, item){
+                    $('#portfolio_num').empty().text(item["num"]);
+                });
+            }
+        })
+    }
+
+    function getManagerInformation(){
+        $.ajax({
+            type:"Get",
+            // url:"/api/Orders",
+            url:"ManagerInformation.txt",
+            dataType:"json",
+            success: function(data){
+                $.each(data, function(idx, item){
+                    $('#portfolio_num').empty().text(item["num"]);
+                });
+            }
+        })
+    }
+    --></script>
+
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Good Luck!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>John Doe</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>My Portfolios</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-file"></i> Portfolios <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="portfolio.html">Portfolio 1</a></li>
+                      <li><a href="portfolio.html">Portfolio 2</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">John Doe
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-md-1 col-sm-3 col-xs-4 tile_stats_count">
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-5 tile_stats_count">
+              <span class="count_top"><i class="fa fa-file"></i> Number Of Portfolios</span>
+              <div id="portfolio_num" class="count">2</div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-5 tile_stats_count">
+              <span class="count_top"><i class="fa fa-dollar"></i> Total Return</span>
+              <div id="total_return" class="count green">0.07%</div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-5 tile_stats_count">
+              <span class="count_top"><i class="fa fa-sun-o"></i> Daily Return</span>
+              <div id="daily_return" class="count">0.01%</div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-5 tile_stats_count">
+              <span class="count_top"><i class="fa fa-sun-o"></i> 20 Day Return</span>
+              <div id="day20_return" class="count">0.02%</div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-5 tile_stats_count">
+              <span class="count_top"><i class="fa fa-sun-o"></i> 250 Day Return</span>
+              <div id="day250_return" class="count">0.08%</div>
+            </div>
+          </div>
+          <!-- /top tiles -->
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="row x_title">
+                  <div class="col-md-6">
+                    <h3>Portfolio Yield <small>form day to day</small></h3>
+                  </div>
+                  <div class="col-md-6">
+                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <canvas id="lineChartPortfolio" height="80px"></canvas>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                  <div class="x_title">d
+                    <h2>Top Portfolio Performance</h2>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="col-md-12 col-sm-12 col-xs-6">
+                    <div>
+                      <div class="green"><h3>Portfolio 1</h3></div>
+                    </div>
+                    <div>
+                      <h3>Portfolio 2</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <!--<div class="clearfix"></div>-->
+              </div>
+            </div>
+
+          </div>
+          <br />
+
+              <div class="row">
+
+
+                <!-- start of weather widget -->
+                <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Portfolios<small>Sessions</small></h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sort"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">date</a>
+                            </li>
+                            <li><a href="#">total return</a>
+                            </li>
+                            <li><a href="#">daily return</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-plus"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <table id="table_portfolio" class="table table-hover">
+                        <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Total Return</th>
+                          <th>Daily Return</th>
+                          <th>20 Day Return</th>
+                          <th>250 Day Return</th>
+                          <th>Creation Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <th scope="row">Portfolio 1</th>
+                          <td>0.02%</td>
+                          <td>0.02%</td>
+                          <td>0.02%</td>
+                          <td>0.02%</td>
+                          <td>1/1/2001</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Portfolio 2</th>
+                          <td>0.02%</td>
+                          <td>0.02%</td>
+                          <td>0.02%</td>
+                          <td>0.02%</td>
+                          <td>2/1/2002</td>
+                        </tr>
+                        </tbody>
+                      </table>
+
+                          </div>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+        </div>
+                <!--</div>-->
+                <!-- end of weather widget -->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Create by <a href="https://colorlib.com">.Net Team 2</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- gauge.js -->
+    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.bundle.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script src="../vendors/jquery.dataTables.min.js"></script>
+	
+  </body>
+</html>

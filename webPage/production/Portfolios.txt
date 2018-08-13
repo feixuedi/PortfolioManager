@@ -1,0 +1,1 @@
+[{"name":"ppp","total_return":"ddd","daily_return":"sdfsd","day20_return":"22","day250_return":"555","create":"sdfdf"},{"name":"ppp","total_return":"ddd","daily_return":"sdfsd","day20_return":"22","day250_return":"555","create":"sdfdf"}]
