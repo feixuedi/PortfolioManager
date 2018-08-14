@@ -21,12 +21,23 @@ namespace PortfolioManager.Controllers
             _context = context;
         }
 
+        //// GET: api/Login
+        //[HttpGet]
+        //public string GetUsers()
+        //{
+        //    var i = _context.Users;
+        //    var res = JsonConvert.SerializeObject(i);
+        //    return res;
+        //}
+
         // GET: api/Login
         [HttpGet]
         public string GetUsers()
         {
             var i = _context.Users;
-            var res = JsonConvert.SerializeObject(i);
+            ResponseResult<DbSet<Users>> rr = new ResponseResult<DbSet<Users>>();
+            rr.Data = i;
+            var res = JsonConvert.SerializeObject(rr);
             return res;
         }
 
