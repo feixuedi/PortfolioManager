@@ -52,15 +52,15 @@
 
 #### 1.3.1 get all portfolios
 * method: get
-* url: /api/portfoios
+* url: /api/portfolios
 * params: {'soeid' : 'test'}
-* return: {'status' : 'ok', 'portfolios' : \[{'name' : 'portfolio1', 'limit' : 100000, 'crash' : 50000, 'policy' : 'fifo', 'createDate' : '2017-12-01', 'profit' : 10000}, {}, ...\]}
+* return: {'status' : 'ok', 'portfolios' : \[{'name' : 'portfolio1', 'limit' : 100000, 'cash' : 50000, 'policy' : 'fifo', 'createdDate' : '2017-12-01', 'profit' : 10000}, {}, ...\]}
 
 #### 1.3.2 get a portfolio
 * method: get
 * url: /api/portfolios/portfolio
 * params: {'ptfid' : 1}
-* return: {'status': 'ok', 'name' : 'portfolio1', 'limit' : 100000, 'crash' : 50000, 'policy' : 'fifo', 'createDate' : '2017-12-01'}
+* return: {'status': 'ok', 'name' : 'portfolio1', 'limit' : 100000, 'cash' : 50000, 'policy' : 'fifo', 'createdDate' : '2017-12-01'}
 
 #### 1.3.3 add a portfolio
 * method: post
@@ -71,19 +71,19 @@
 #### 1.3.4 delete a portfolio
 * method: post
 * url: /api/portfolios/delete
-* content: {'soeid' : 'test', 'ptfid' : 1}
+* content: {'ptfid' : 1}
 * return: {'status' : 'ok'}
 
 #### 1.3.5 update a portfolio
 * method: post
 * url: /api/portfolios/update
-* content: {'name' : 'portfolio1', 'limit' : 100000, 'crash' : 50000, 'policy' : 'fifo', 'createDate' : '2017-12-01'}
+* content: {'name' : 'portfolio1', 'limit' : 100000, 'cash' : 50000, 'policy' : 'fifo'}
 * return: {'status' : 'ok'}
 
-#### 1.3.6 get portfolio profit by manager
+#### 1.3.6 get portfolio profit by manager for louise
 * method: get
 * url: /api/portfolios/manager-profit
-* params: {'soeid' : 'test',}
+* params: {'soeid' : 'test'}
 * return: {'status' : 'ok', 'profit' : \[{'ptfid' : 1, 'name' : 'portfolio1', 'profit' : 10000}, {}, ...\]}
 
 #### 1.3.7 delegate a portfolio
@@ -94,7 +94,7 @@
 
 ### 1.4 Profit Data
 
-#### 1.4.1 get manager's profit
+#### 1.4.1 get manager's profit for kate
 * method: get
 * url: /api/profit/bymanager
 * param: {'soeid' : 'test'}
@@ -111,15 +111,15 @@
 		'profit' : [
 				{
 					'ptfid' : 1,
-					'ptfName' : 'portfolio1'
-					'days' : 5,
-					'values' : [ 0.01, 0.02, 0.03, 0.02, 0.04 ]
+					'ptfName' : 'portfolio1',
+					'dates' : ['2017-01-01', '2017-01-02', '2017-01-03', '2017-01-04', '2017-01-05'],
+					'values' : [0.01, 0.02, 0.03, 0.02, 0.04 ]
 				},
 				{},
 				...
 			   ]
 	}
-	
+
 #### 1.4.3 get portfolios' profit
 * method: 'get'
 * url: /api/profit/byprofolio
@@ -136,7 +136,7 @@
 				'dailyReturn' : 0.01, 
 				'20dayReturn' : '0.01', 
 				'100dayReturn' : 0.01, 
-				'creationDate' : '2017-01-01'
+				'createdDate' : '2017-01-01'
 			}, 
 			{}, 
 			...
