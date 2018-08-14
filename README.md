@@ -109,15 +109,15 @@
 	{
 		'status' : 'ok',
 		'profit' : [
-						{
-							'ptfid' : 1,
-							'ptfName' : 'portfolio1'
-							'days' : 5,
-							'values' : [ 0.01, 0.02, 0.03, 0.02, 0.04 ]
-						},
-						{},
-						...
-					]
+				{
+					'ptfid' : 1,
+					'ptfName' : 'portfolio1'
+					'days' : 5,
+					'values' : [ 0.01, 0.02, 0.03, 0.02, 0.04 ]
+				},
+				{},
+				...
+			   ]
 	}
 	
 #### 1.4.3 get portfolios' profit
@@ -129,16 +129,16 @@
 	{
 	'status' : 'ok', 
 	'profit' : [
-					{
-						'ptfid' : 1,
-						'ptfName' : 'portfolio1', 
-						'totalReturn' : 0.01, 
-						'dailyReturn' : 0.01, 
-						'20dayReturn' : '0.01', 
-						'100dayReturn' : 0.01, 
-						'creationDate' : '2017-01-01'
-					}, 
-					{}, 
-					...
-				]
+			{
+				'ptfid' : 1,
+				'ptfName' : 'portfolio1', 
+				'totalReturn' : 0.01, 
+				'dailyReturn' : 0.01, 
+				'20dayReturn' : '0.01', 
+				'100dayReturn' : 0.01, 
+				'creationDate' : '2017-01-01'
+			}, 
+			{}, 
+			...
+		   ]
 	}
