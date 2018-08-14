@@ -1,0 +1,14 @@
+C:\ubuntu\PortfolioManager\PortfolioManager\bin\Debug\netcoreapp2.1\PortfolioManager.deps.json
+C:\ubuntu\PortfolioManager\PortfolioManager\bin\Debug\netcoreapp2.1\PortfolioManager.runtimeconfig.json
+C:\ubuntu\PortfolioManager\PortfolioManager\bin\Debug\netcoreapp2.1\PortfolioManager.runtimeconfig.dev.json
+C:\ubuntu\PortfolioManager\PortfolioManager\bin\Debug\netcoreapp2.1\PortfolioManager.dll
+C:\ubuntu\PortfolioManager\PortfolioManager\bin\Debug\netcoreapp2.1\PortfolioManager.pdb
+C:\ubuntu\PortfolioManager\PortfolioManager\obj\Debug\netcoreapp2.1\PortfolioManager.csprojAssemblyReference.cache
+C:\ubuntu\PortfolioManager\PortfolioManager\obj\Debug\netcoreapp2.1\PortfolioManager.csproj.CoreCompileInputs.cache
+C:\ubuntu\PortfolioManager\PortfolioManager\obj\Debug\netcoreapp2.1\PortfolioManager.RazorAssemblyInfo.cache
+C:\ubuntu\PortfolioManager\PortfolioManager\obj\Debug\netcoreapp2.1\PortfolioManager.RazorAssemblyInfo.cs
+C:\ubuntu\PortfolioManager\PortfolioManager\obj\Debug\netcoreapp2.1\PortfolioManager.AssemblyInfoInputs.cache
+C:\ubuntu\PortfolioManager\PortfolioManager\obj\Debug\netcoreapp2.1\PortfolioManager.AssemblyInfo.cs
+C:\ubuntu\PortfolioManager\PortfolioManager\obj\Debug\netcoreapp2.1\PortfolioManager.RazorTargetAssemblyInfo.cache
+C:\ubuntu\PortfolioManager\PortfolioManager\obj\Debug\netcoreapp2.1\PortfolioManager.dll
+C:\ubuntu\PortfolioManager\PortfolioManager\obj\Debug\netcoreapp2.1\PortfolioManager.pdb
