@@ -94,13 +94,13 @@
 
 ### 1.4 Profit Data
 
-#### 1.4.1 get manager's profit for kate
+#### 1.4.1 get manager's profit for kate index header
 * method: get
 * url: /api/profit/bymanager
 * param: {'soeid' : 'test'}
 * return: {'status' : 'ok', 'portfolioNum' : 2, 'totalReturn' : 0.07, 'dailyReturn' : 0.01, '20dayReturn' : 0.02, '100dayReturn' : 0.08}
 
-#### 1.4.2 get profit by date
+#### 1.4.2 get profit by date for kate index middle chart
 * method: get
 * url: /api/profit/bydate
 * param: {'soeid' : 'test', 'startDate' : '2017-04-01', 'endDate' : '2017-06-01'}
@@ -120,7 +120,7 @@
 			   ]
 	}
 
-#### 1.4.3 get portfolios' profit
+#### 1.4.3 get portfolios' profit for kate index bottom
 * method: 'get'
 * url: /api/profit/byprofolio
 * param: {'soeid' : 'test'}
@@ -142,3 +142,177 @@
 			...
 		   ]
 	}
+
+#### 1.4.4 sort portfolio's return rate for kate index middle list
+* method: 'get'
+* url: /api/proifit/sort
+* param: {'soeid' : 'test'}
+* return:
+***
+    {
+    'status' : 'ok',
+    'portfolioNames' :
+        [
+            'portfolio1',
+            'portfolio2'
+        ]
+    }
+
+### 1.5 Portfolio Data
+
+#### 1.5.1 get portfolio's data for kate portfolio header
+* method: get
+* url: /api/positions/data
+* param: {"ptfid" : 1}
+* return: 
+***
+    {
+        "status" : "ok",
+        "totalAsset" : 200000.00,
+        "totalReturn" : 0.07,
+        "dailyReturn" : 0.01,
+        "20dayReturn" : 0.02,
+        "100dayReturn" : 0.08,
+        "cash": 15.57,
+        "policy": "fifo"
+    }
+ 
+#### 1.5.2 get profits by date for kate portfolio middle chart
+* method: get
+* url: /api/positions/profit
+* param: {"ptfid" : 1, "startDate" : "2017-04-01", "endDate" : "2017-06-01"}
+* return: 
+***
+	{
+		"status" : "ok",
+		"profit" : [
+				{
+					"posid' : 1,
+					"symbol" : "AAPL",
+					"dates" : ["2017-01-01", "2017-01-02", "2017-01-03", "2017-01-04", "2017-01-05"],
+					"values' : [0.01, 0.02, 0.03, 0.02, 0.04 ]
+				},
+				...
+		   ]
+	}
+
+#### 1.5.3 sort position by profit date for kate portfolio middle list
+* method: get
+* url: /api/positions/sort
+* param: {"ptfid": 1}
+* return:
+***
+    {"status": "ok",
+    "symbolNames": ["AAPL", "C"]
+    }
+
+#### 1.5.4 position details for kate portfolio middle-bottom left list and trade bottom right list
+* method: get
+* url: /api/positions/details
+* param: {"ptfid": 1}
+* return:
+***
+    {"status": "ok",
+    "positions": [
+        {
+        "symbol": "AAPL",
+        "latesPrice": 15.49,
+        "bidPrice": 13.79,
+        "qty": 1000,        
+        "durationDays": 15,
+        "latestValue": 1549
+        },
+        ...
+        ]
+    }
+
+#### 1.5.5 for kate portfolio middle-bottom middle pie chart
+* method: get
+* url: /api/positions/percent
+* param: {"ptfid": 1}
+* return:
+***
+    {"status": "ok",
+    "percents": [
+        {
+        "symbol": "AAPL",
+        "value": 15.7
+        },
+        ...
+        ]
+    }
+
+#### 1.5.6 for kate portfolio middle-bottom middle pie chart
+* method: get
+* url: /api/positions/typePercent
+* param: {"ptfid": 1}
+* return:
+***
+    {"status": "ok",
+    "percents": [
+        {
+        "type": "Commodities",
+        "value": 15.7
+        },
+        ...
+        ]
+    }
+
+#### 1.5.7 view trade histroy for kate portfolio bottom left list
+* method: get
+* url: /api/positions/histroy
+* param: {"ptfid": 1}
+* return:
+***
+    {"status": "ok",
+    "trades": [
+        {
+        "symbol": "AAPL",
+        "price": 15.7,
+        "date": 20,
+        "type": "buy",
+        "qty": 150
+        },
+        ...
+        ]
+    }
+
+### 1.6 Trade
+
+#### 1.6.1 view symbol for kate portfolio bottom right chart
+* method: get
+* url: /api/symbol/histroy
+* param: {"symbol": "AAPL", "startDate": "2017-12-01", "endDate": "2017-12-10"}
+* return:
+***
+    {"status": "ok",
+    "dates": ["2017-12-01", "2017-12-03", "2017-12-05", "2017-12-07", "2017-12-09"]
+    "values": [153.54,153.79,154.13,152.67,153.00]
+    }
+
+#### 1.6.2 view symbol detail for kate trade middle list
+* method: get
+* url: /api/symbol/detail
+* param: {"symbol": "AAPL"}
+* return:
+***
+    {
+        "status": "ok",
+        "latestPrice": 151.00,
+        "openPrice": 150.00,
+        "lowestPrice": 149.79,
+        "highestPrice": 151.11,
+        "volume": 1008,
+        "changeRate": 7.5
+    }
+
+#### 1.6.3 view all symbol within a type for kate trade middle 
+* method: get
+* url: /api/symbol/detail
+* param: {"type": "commodities"}
+* return:
+***
+    {
+        "symbols": ["AAPL", "C", ...]
+    }
+
